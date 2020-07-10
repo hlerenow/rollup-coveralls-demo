@@ -1,0 +1,14 @@
+*/**/node_modules
+
+*/**/dist
+
+*/**/temp
+
+.idea
+
+.vscode
+
+*/**/dockerData
+node_modules
+
+*/**/coverage
