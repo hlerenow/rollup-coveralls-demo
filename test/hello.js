@@ -4,7 +4,7 @@ import chai from "chai";
 const expect = chai.expect;
 
 describe("A spec suite", function () {
-  it("contains a passing spec", function (done) {
+  it("contains a passing spec", function () {
     expect(Index()).equals("123");
   });
 });
