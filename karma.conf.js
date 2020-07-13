@@ -1,14 +1,7 @@
 // @ts-nocheck
-const replace = require("@rollup/plugin-replace");
-const json = require("rollup-plugin-json");
-const resolve = require("rollup-plugin-node-resolve");
-const commonjs = require("rollup-plugin-commonjs");
-const babel = require("rollup-plugin-babel");
-const typescript = require("rollup-plugin-typescript2");
-const istanbul = require("rollup-plugin-istanbul");
-const pkg = require("./package.json");
+const { plugins } = require("./scripts/config");
 
-module.exports = function (config) {
+module.exports = function karmaConfig(config) {
   config.set({
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: "",
@@ -49,23 +42,7 @@ module.exports = function (config) {
       ],
     },
     rollupPreprocessor: {
-      plugins: [
-        replace({
-          __BUILD_TIME__: Date.now().toString(),
-          __VERSION__: pkg.version,
-        }),
-        resolve(),
-        commonjs(),
-        json(),
-        typescript(),
-        babel({
-          // 只编译源代码
-          exclude: "node_modules/**",
-        }),
-        istanbul({
-          exclude: ["test/**/*.js", "node_modules/**/*"],
-        }),
-      ],
+      plugins,
       output: {
         format: "umd", // Helps prevent naming collisions.
         sourcemap: "inline", // Sensible for testing.

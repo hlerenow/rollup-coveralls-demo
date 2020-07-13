@@ -4,14 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "rollup -c",
-    "build:umd": "rollup -c scripts/config.js --environment TARGET:umd",
-    "build:umd:min": "rollup -c scripts/config.js --environment TARGET:umd:min",
-    "build:cjs": "rollup -c scripts/config.js --environment TARGET:cjs",
-    "build:esm": "rollup -c scripts/config.js --environment TARGET:esm",
+    "dev": "rollup -c  scripts/dev.js -w",
+    "build:umd": "rollup -c scripts/build.js --environment TARGET:umd",
+    "build:umd:min": "rollup -c scripts/build.js --environment TARGET:umd:min",
+    "build:cjs": "rollup -c scripts/build.js --environment TARGET:cjs",
+    "build:esm": "rollup -c scripts/build.js --environment TARGET:esm",
     "build": "rm -r -f ./dist && npm run build:umd && npm run build:umd:min && npm run build:cjs && npm run build:esm",
     "lint": "eslint --fix && prettier --write ./src/**/*.ts",
-    "test": "cross-env BABEL_ENV=tes karma start"
+    "test": "cross-env karma start"
   },
   "license": "MIT",
   "husky": {
